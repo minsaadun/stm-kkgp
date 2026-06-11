@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sijil Teknologi Maklumat | Kolej Komuniti</title>
+  <style>
+    :root{
+      --bg:#f5f8ff;
+      --dark:#0b1736;
+      --primary:#1d4ed8;
+      --primary-2:#06b6d4;
+      --accent:#facc15;
+      --text:#27324a;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --line:#dbeafe;
+      --shadow:0 18px 45px rgba(15,23,42,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:1000;
+      background:rgba(255,255,255,.88);backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(219,234,254,.85);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--dark)}
+    .logo{
+      width:64px;height:42px;border-radius:14px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-2));
+      display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 10px 25px rgba(29,78,216,.25)
+    }
+    .nav-links{display:flex;gap:24px;align-items:center;font-size:15px;font-weight:700;color:#334155}
+    .nav-links a:hover{color:var(--primary)}
+    .menu-btn{display:none;border:0;background:var(--dark);color:white;padding:10px 13px;border-radius:12px;font-size:18px}
+
+    .hero{
+      padding:132px 0 70px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(6,182,212,.22), transparent 32%),
+        radial-gradient(circle at 10% 20%, rgba(29,78,216,.22), transparent 28%),
+        linear-gradient(135deg,#eef6ff 0%,#ffffff 55%,#ecfeff 100%);
+      overflow:hidden;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:40px;align-items:center}
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      background:#e0f2fe;color:#075985;border:1px solid #bae6fd;
+      padding:8px 14px;border-radius:999px;font-weight:800;font-size:14px;margin-bottom:20px
+    }
+    h1{font-size:clamp(34px,5vw,62px);line-height:1.05;color:var(--dark);letter-spacing:-1.6px;margin-bottom:20px}
+    .hero p{font-size:18px;color:#475569;max-width:650px;margin-bottom:28px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:14px 20px;border-radius:15px;font-weight:800;transition:.25s;border:1px solid transparent
+    }
+    .btn-primary{background:linear-gradient(135deg,var(--primary),#0f766e);color:white;box-shadow:0 14px 28px rgba(29,78,216,.26)}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-soft{background:white;color:var(--dark);border-color:#dbeafe}
+    .quick-info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+    .quick-card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 26px rgba(15,23,42,.06)}
+    .quick-card strong{display:block;color:var(--dark);font-size:20px}
+    .quick-card span{font-size:13px;color:var(--muted);font-weight:700}
+
+    .hero-visual{position:relative}
+    .device{
+      background:linear-gradient(180deg,#0f172a,#102a63);
+      color:white;border-radius:32px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden
+    }
+    .device:before{content:"";position:absolute;inset:-80px -60px auto auto;width:190px;height:190px;background:rgba(250,204,21,.25);border-radius:50%}
+    .screen-card{position:relative;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:20px;margin-bottom:16px}
+    .code-line{height:10px;border-radius:99px;background:rgba(255,255,255,.35);margin:12px 0}.code-line.small{width:55%}.code-line.medium{width:78%}
+    .floating{
+      position:absolute;right:-12px;bottom:28px;background:white;color:var(--dark);
+      border-radius:20px;padding:18px;box-shadow:var(--shadow);width:210px;border:1px solid #dbeafe
+    }
+    .floating b{color:var(--primary);font-size:28px;display:block}
+
+    section{padding:74px 0}.section-title{text-align:center;margin-bottom:38px}.section-title h2{font-size:clamp(28px,4vw,42px);color:var(--dark);margin-bottom:10px}.section-title p{color:var(--muted);max-width:720px;margin:auto}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 12px 30px rgba(15,23,42,.06)}
+    .icon{width:52px;height:52px;border-radius:16px;background:#e0f2fe;display:grid;place-items:center;font-size:25px;margin-bottom:16px}.card h3{color:var(--dark);margin-bottom:10px;font-size:21px}.card p,.card li{color:#526070}.card ul{padding-left:18px;margin-top:8px}
+    .highlight{background:linear-gradient(135deg,#0b1736,#1d4ed8);color:white;border-radius:32px;padding:42px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;box-shadow:var(--shadow)}
+    .highlight h2{font-size:34px;line-height:1.1;margin-bottom:12px}.highlight p{color:#dbeafe}.check-list{display:grid;gap:12px}.check{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);padding:14px;border-radius:16px;font-weight:700}
+    .course-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}.tab-btn{border:1px solid var(--line);background:white;padding:11px 16px;border-radius:999px;font-weight:800;color:#334155;cursor:pointer}.tab-btn.active{background:var(--primary);color:white;border-color:var(--primary)}
+    .tab-content{display:none}.tab-content.active{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.pill{background:white;border:1px solid var(--line);padding:14px 16px;border-radius:16px;font-weight:700;color:#334155;box-shadow:0 8px 22px rgba(15,23,42,.04)}
+    .career-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.career{background:#fff;border:1px solid #dbeafe;border-radius:18px;padding:18px;font-weight:800;color:#0f172a}.career span{display:block;color:var(--primary);font-size:26px;margin-bottom:8px}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{position:relative;background:white;border:1px solid var(--line);border-radius:22px;padding:22px}.step b{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--accent);color:#1f2937;margin-bottom:12px}
+    .cta{background:linear-gradient(135deg,#fff7ed,#eff6ff);border:1px solid #fde68a;border-radius:32px;padding:44px;text-align:center}.cta h2{color:var(--dark);font-size:38px;margin-bottom:12px}.cta p{max-width:720px;margin:0 auto 24px;color:#475569}
+    footer{background:#071126;color:#cbd5e1;padding:30px 0;text-align:center;font-size:14px}
+    .to-top{position:fixed;right:18px;bottom:18px;width:45px;height:45px;border:0;border-radius:50%;background:var(--primary);color:white;font-size:20px;display:none;box-shadow:0 12px 24px rgba(29,78,216,.3);cursor:pointer}
+    .to-top.show{display:block}
+
+    @media(max-width:900px){.hero-grid,.highlight,.grid-2{grid-template-columns:1fr}.grid-3,.career-grid,.timeline{grid-template-columns:repeat(2,1fr)}.tab-content.active{grid-template-columns:repeat(2,1fr)}.floating{position:static;margin-top:16px;width:100%}.quick-info{grid-template-columns:1fr}}
+    @media(max-width:720px){.nav-links{position:absolute;top:74px;left:4%;right:4%;background:white;border:1px solid var(--line);border-radius:20px;padding:18px;flex-direction:column;align-items:flex-start;display:none;box-shadow:var(--shadow)}.nav-links.open{display:flex}.menu-btn{display:block}.grid-3,.career-grid,.timeline,.tab-content.active{grid-template-columns:1fr}.hero{padding-top:112px}section{padding:56px 0}.highlight,.cta{padding:28px}h1{letter-spacing:-.8px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand"><span class="logo">STM</span><span>Sijil Teknologi Maklumat | KOLEJ KOMUNITI GERIK</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#tentang">Tentang</a><a href="#kursus">Kursus</a><a href="#kerjaya">Kerjaya</a><a href="#syarat">Syarat</a><a href="#hubungi">Hubungi</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">🎓 Program TVET Bidang Komputer</div>
+          <h1>Bina asas kerjaya anda dalam dunia Teknologi Maklumat</h1>
+          <p>Program Sijil Teknologi Maklumat di Kolej Komuniti menyediakan pengetahuan dan kemahiran praktikal dalam komputer, pengaturcaraan, rangkaian, pembangunan web, mobile app, cybersecurity, IoT dan baik pulih komputer.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#syarat">Semak Kelayakan</a>
+            <a class="btn btn-soft" href="#kursus">Lihat Kandungan Program</a>
+          </div>
+          <div class="quick-info">
+            <div class="quick-card"><strong>4 Semester</strong><span>Termasuk Latihan Industri</span></div>
+            <div class="quick-card"><strong>Praktikal</strong><span>Belajar secara hands-on</span></div>
+            <div class="quick-card"><strong>Kerjaya IT</strong><span>Support, web, network & repair</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="device">
+            <div class="screen-card"><h3>Kemahiran yang dipelajari</h3><div class="code-line medium"></div><div class="code-line"></div><div class="code-line small"></div></div>
+            <div class="screen-card"><h3>Networking + Cybersecurity</h3><div class="code-line"></div><div class="code-line medium"></div></div>
+            <div class="screen-card"><h3>Web & Mobile App</h3><div class="code-line medium"></div><div class="code-line small"></div></div>
+          </div>
+          <div class="floating"><b>SPM</b>Lulus SPM dan lulus Matematik</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang">
+      <div class="container">
+        <div class="section-title"><h2>Kenapa pilih program ini?</h2><p>Program ini sesuai untuk pelajar yang berminat membina asas kemahiran IT sebelum bekerja atau menyambung pengajian ke tahap lebih tinggi.</p></div>
+        <div class="grid-3">
+          <div class="card"><div class="icon">💻</div><h3>Asas IT yang luas</h3><p>Pelajar didedahkan kepada hardware, software, database, programming, operating system, networking dan cybersecurity.</p></div>
+          <div class="card"><div class="icon">🛠️</div><h3>Fokus kemahiran praktikal</h3><p>Pembelajaran merangkumi teori dan amali supaya pelajar boleh melaksanakan tugasan IT berkaitan alam pekerjaan.</p></div>
+          <div class="card"><div class="icon">🏢</div><h3>Latihan Industri</h3><p>Pelajar menjalani latihan industri untuk mendapatkan pengalaman sebenar dalam persekitaran kerja bidang IT.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container highlight">
+        <div><h2>Matlamat Program</h2><p>Melahirkan sokongan teknikal IT yang berpengetahuan, berkemahiran digital, bertanggungjawab dan mampu menyesuaikan diri dengan perkembangan teknologi semasa.</p></div>
+        <div class="check-list"><div class="check">✓ Kemahiran teknikal komputer dan rangkaian</div><div class="check">✓ Komunikasi dan kerja berpasukan</div><div class="check">✓ Etika profesional dan keusahawanan</div></div>
+      </div>
+    </section>
+
+    <section id="kursus">
+      <div class="container">
+        <div class="section-title"><h2>Kandungan Program</h2><p>Antara kursus utama yang dipelajari sepanjang program.</p></div>
+        <div class="course-tabs">
+          <button class="tab-btn active" data-tab="core">Core Computing</button>
+          <button class="tab-btn" data-tab="discipline">Discipline Core</button>
+          <button class="tab-btn" data-tab="softskill">Soft Skills</button>
+        </div>
+        <div class="tab-content active" id="core"><div class="pill">Basic Mathematics</div><div class="pill">Database Fundamentals</div><div class="pill">Programming Fundamentals</div><div class="pill">Computer Architecture</div><div class="pill">Operating Systems</div><div class="pill">System Analysis & Design</div><div class="pill">Network & Data Communication</div><div class="pill">Cybersecurity Fundamentals</div></div>
+        <div class="tab-content" id="discipline"><div class="pill">Web Development</div><div class="pill">Object Oriented Programming</div><div class="pill">Network Technology</div><div class="pill">Mobile Application</div><div class="pill">Introduction to IoT</div><div class="pill">Project Management</div><div class="pill">Network Administration</div><div class="pill">Computer Repair & Maintenance</div></div>
+        <div class="tab-content" id="softskill"><div class="pill">Communicative English</div><div class="pill">Workplace English</div><div class="pill">Keusahawanan</div><div class="pill">Integriti & Antirasuah</div><div class="pill">Pengajian Malaysia</div><div class="pill">Pendidikan Islam / Moral</div></div>
+      </div>
+    </section>
+
+    <section id="kerjaya">
+      <div class="container">
+        <div class="section-title"><h2>Peluang Kerjaya Graduan</h2><p>Graduan boleh memulakan kerjaya dalam pelbagai posisi sokongan teknikal dan pembangunan IT.</p></div>
+        <div class="career-grid">
+          <div class="career"><span>01</span>Juruteknik Komputer</div><div class="career"><span>02</span>Pembantu Pengaturcara</div><div class="career"><span>03</span>Usahawan IT</div><div class="career"><span>04</span>Pentadbir IT</div><div class="career"><span>05</span>Pembantu Pembangun Web</div><div class="career"><span>06</span>Sokongan Projek IT</div><div class="career"><span>07</span>Helpdesk Support</div><div class="career"><span>08</span>Juruteknik Perkhidmatan IT</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="syarat">
+      <div class="container">
+        <div class="grid-2">
+          <div class="card"><div class="icon">✅</div><h3>Syarat Kemasukan</h3><ul><li>Wajib lulus SPM.</li><li>Wajib lulus Matematik.</li></ul></div>
+          <div class="card"><div class="icon">📌</div><h3>Sesuai untuk siapa?</h3><p>Pelajar lepasan SPM yang suka mencuba teknologi, membaiki komputer, membina laman web, memahami rangkaian, belajar coding dan meneroka keselamatan siber.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title"><h2>Laluan Pembelajaran</h2><p>Gambaran ringkas perjalanan pelajar sepanjang program (kursus.</p></div>
+        <div class="timeline"><div class="step"><b>1</b><h3>Semester 1</h3><p>Basic Mathematics, Database Fundamentals, Programming Fundamentals, Computer Architecture, Systems Analysis and Design Fundamentals.</p></div><div class="step"><b>2</b><h3>Semester 2</h3><p>Operating Systems, Network and Data Communications, Web Development, Object-Oriented Programming, Network Technology.</p></div><div class="step"><b>3</b><h3>Semester 3</h3><p>Cybersecurity Fundamentals, Mobile Application Development, Introduction to Internet of Things (IoT), Essential Project Management, Network Administration, Computer Repair and Maintenance</p></div><div class="step"><b>4</b><h3>Semester 4</h3><p>Latihan Industri untuk pengalaman kerja sebenar.</p></div></div>
+      </div>
+    </section>
+
+    <section id="hubungi">
+      <div class="container cta"><h2>Minat masuk bidang IT?</h2><p>Mulakan Perjalanan Anda Dalam Dunia IT Hari Ini.</p><p>Jadikan Program Sijil Teknologi Maklumat sebagai langkah pertama ke arah kerjaya dalam pembangunan web, rangkaian komputer, keselamatan siber dan sokongan teknikal.</p><a href="https://wa.me/60176747479?text=Assalamualaikum.%20Saya%20berminat%20untuk%20menyertai%20Program%20Sijil%20Teknologi%20Maklumat.%20Boleh%20saya%20dapatkan%20maklumat%20lanjut?" class="btn btn-primary">Hubungi Pegawai Pengambilan Kolej Komuniti Gerik</a></div>
+    </section>
+  </main>
+
+  <footer><div class="container">© 2026 Kolej Komuniti Gerik | Program Sijil Teknologi Maklumat</div></footer>
+  <button class="to-top" id="toTop">↑</button>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 450) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    });
+    toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+  </script>
+</body>
+</html>
